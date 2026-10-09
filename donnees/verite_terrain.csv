@@ -1,0 +1,27 @@
+ordonnance,med_a,med_b,niveau,mecanisme,source,a_verifier
+O01,Warfarin,Ibuprofen,3,risque hémorragique,ANSM Thésaurus : AVK + AINS,non
+O02,Simvastatin,Clarithromycin,4,rhabdomyolyse,ANSM Thésaurus : simvastatine + clarithromycine ; RCP Zocor,non
+O02,Simvastatin,Amlodipine,2,rhabdomyolyse (dose de simvastatine limitée),FDA Drug Safety Communication 2011 (simvastatine + amlodipine),oui
+O03,Nitroglycerin,Sildenafil,4,hypotension sévère,ANSM Thésaurus ; RCP Viagra 4.3,non
+O04,Fluoxetine,Tramadol,1,syndrome sérotoninergique / convulsions,ANSM Thésaurus : tramadol + ISRS,oui
+O05,Lisinopril,Spironolactone,3,hyperkaliémie,ANSM Thésaurus : épargneurs de potassium + IEC,non
+O05,Lisinopril,Furosemide,2,hypotension / insuffisance rénale,ANSM Thésaurus : IEC + diurétiques hypokaliémiants,non
+O06,Methotrexate,Ketoprofen,3,toxicité hématologique,ANSM Thésaurus : méthotrexate + AINS,non
+O06,Ketoprofen,Prednisone,1,ulcère et hémorragie digestive,ANSM Thésaurus : AINS + glucocorticoïdes,non
+O07,Digoxin,Amiodarone,2,surdosage digitalique,ANSM Thésaurus : digoxine + amiodarone,non
+O07,Digoxin,Furosemide,2,hypokaliémie favorisant la toxicité digitalique,ANSM Thésaurus : digitaliques + hypokaliémiants,oui
+O08,Clopidogrel,Omeprazole,3,baisse d'efficacité du clopidogrel,ANSM Thésaurus : clopidogrel + oméprazole ; EMA 2010,non
+O08,Clopidogrel,Acetylsalicylic acid,1,risque hémorragique,ANSM Thésaurus : antiagrégants plaquettaires entre eux,non
+O11,Fluindione,Ibuprofen,3,risque hémorragique,ANSM Thésaurus : AVK + AINS,non
+O12,Citalopram,Hydroxychloroquine,3,torsades de pointes,ANSM Thésaurus : médicaments torsadogènes,non
+O13,Morphine,Alprazolam,1,dépression respiratoire,ANSM Thésaurus : morphiniques + benzodiazépines ; FDA 2016,non
+O14,Allopurinol,Azathioprine,3,toxicité hématologique,ANSM Thésaurus : azathioprine + allopurinol,oui
+O15,Lithium,Ibuprofen,3,surdosage en lithium,ANSM Thésaurus : lithium + AINS,non
+O15,Lithium,Ramipril,3,surdosage en lithium,ANSM Thésaurus : lithium + IEC,non
+O15,Ibuprofen,Ramipril,2,insuffisance rénale aiguë,ANSM Thésaurus : AINS + IEC,non
+O16,Warfarin,Fluconazole,2,augmentation de l'effet anticoagulant,ANSM Thésaurus : AVK + fluconazole,non
+O16,Warfarin,Amiodarone,2,augmentation de l'effet anticoagulant,ANSM Thésaurus : AVK + amiodarone,non
+O17,Colchicine,Clarithromycin,4,toxicité de la colchicine,ANSM Thésaurus : colchicine + macrolides,non
+O19,Apixaban,Clopidogrel,1,risque hémorragique,ANSM Thésaurus : anticoagulants oraux + antiagrégants,non
+O20,Sertraline,Ibuprofen,1,risque hémorragique,ANSM Thésaurus : ISRS + AINS,oui
+O20,Glyburide,Fluconazole,2,hypoglycémie,ANSM Thésaurus : sulfamides hypoglycémiants + fluconazole,non

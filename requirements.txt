@@ -1,0 +1,6 @@
+pandas>=2.0
+numpy
+scikit-learn
+matplotlib
+problog>=2.2
+jupyter

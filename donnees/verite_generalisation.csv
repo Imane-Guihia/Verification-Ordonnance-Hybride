@@ -1,0 +1,6 @@
+ordonnance,med_a,med_b,niveau,mecanisme,source,a_verifier
+X01,Warfarin,Celecoxib,3,risque hémorragique,ANSM Thésaurus : AVK + AINS,non
+X02,Warfarin,Meloxicam,3,risque hémorragique,ANSM Thésaurus : AVK + AINS,non
+X03,Rivaroxaban,Ticlopidine,1,risque hémorragique,ANSM Thésaurus : anticoagulants oraux + antiagrégants,non
+X04,Methotrexate,Indomethacin,3,toxicité hématologique,ANSM Thésaurus : méthotrexate + AINS,non
+X05,Lithium,Piroxicam,3,surdosage en lithium,ANSM Thésaurus : lithium + AINS,non

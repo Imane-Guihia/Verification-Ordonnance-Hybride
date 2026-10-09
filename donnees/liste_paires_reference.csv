@@ -1,0 +1,25 @@
+med_a,med_b,niveau,source
+warfarine,ibuprofène,3,ANSM : AVK + AINS (exemple)
+warfarine,naproxène,3,ANSM : AVK + AINS (exemple)
+warfarine,diclofénac,3,ANSM : AVK + AINS (exemple)
+warfarine,aspirine,3,ANSM : AVK + aspirine
+warfarine,amiodarone,2,ANSM : AVK + amiodarone
+warfarine,fluconazole,2,ANSM : AVK + fluconazole
+simvastatine,clarithromycine,4,ANSM : simvastatine + clarithromycine
+simvastatine,itraconazole,4,ANSM : simvastatine + itraconazole
+simvastatine,kétoconazole,4,ANSM : simvastatine + kétoconazole
+sildénafil,trinitrine,4,ANSM / RCP Viagra
+sildénafil,isosorbide mononitrate,4,ANSM / RCP Viagra
+phénelzine,fluoxétine,4,ANSM : IMAO non sélectifs + ISRS
+fluoxétine,tramadol,1,ANSM : tramadol + ISRS
+spironolactone,ramipril,3,ANSM : épargneurs de potassium + IEC
+spironolactone,énalapril,3,ANSM : épargneurs de potassium + IEC
+méthotrexate,ibuprofène,3,ANSM : méthotrexate + AINS
+méthotrexate,triméthoprime,3,ANSM : méthotrexate + triméthoprime
+digoxine,amiodarone,2,ANSM : digoxine + amiodarone
+clopidogrel,oméprazole,3,ANSM : clopidogrel + oméprazole
+lithium,ibuprofène,3,ANSM : lithium + AINS
+morphine,diazépam,1,ANSM : morphiniques + benzodiazépines
+amiodarone,sotalol,3,ANSM : torsadogènes
+colchicine,clarithromycine,4,ANSM : colchicine + macrolides
+allopurinol,azathioprine,3,ANSM : azathioprine + allopurinol

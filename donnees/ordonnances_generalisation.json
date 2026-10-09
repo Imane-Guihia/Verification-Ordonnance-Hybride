@@ -1,0 +1,7 @@
+[
+  {"id": "X01", "type": "généralisation", "description": "AINS absent de la table ATC (classé seulement par le graphe)", "medicaments": ["warfarine", "célécoxib"]},
+  {"id": "X02", "type": "généralisation", "description": "AINS absent de la table ATC", "medicaments": ["warfarine", "méloxicam", "paracétamol"]},
+  {"id": "X03", "type": "généralisation", "description": "Antiagrégant absent de la table ATC", "medicaments": ["rivaroxaban", "ticlopidine"]},
+  {"id": "X04", "type": "généralisation", "description": "AINS absent de la table ATC", "medicaments": ["méthotrexate", "indométacine"]},
+  {"id": "X05", "type": "généralisation", "description": "AINS absent de la table ATC", "medicaments": ["lithium", "piroxicam", "amlodipine"]}
+]
