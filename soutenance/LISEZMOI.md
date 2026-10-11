@@ -1,5 +1,6 @@
 # Soutenance
 
-Fichiers repris de la version d'Aziz (`ordo_check`) : présentation (12 diapositives), déroulé minuté et trame orale.
+- `presentation_fusion.pptx` : présentation de la version fusionnée (14 diapositives, notes d'orateur incluses).
+- `soutenance.md` et `trame_orale_binome.md` : déroulé minuté et trame orale repris de la version d'Aziz (répartition des rôles A/B).
 
-Ils contiennent encore les chiffres de sa version (F1 0,902 / 0,936, 11 règles, 20 ordonnances). À mettre à jour avec la version fusionnée : 24 règles expertes + 3 règles du graphe, 40 ordonnances, F1 0,92 (précision 0,96, rappel 0,89), référence F1 0,56, évaluation croisée avant fusion (notebook 03, section 1).
+Chiffres de référence : 24 règles expertes + 3 règles du graphe, 40 ordonnances, 54 paires, F1 0,92 (précision 0,96, rappel 0,89), référence F1 0,56.
