@@ -115,6 +115,7 @@ CONFIGS_ABLATION = {
     "– sans règles expertes (graphe seul)": {"familles": ("pk", "effet", "cible")},
     "– sans règle pharmacocinétique G1": {"familles": ("classe", "effet", "cible")},
     "– sans règles génériques G1-G3": {"familles": ("classe",)},
+    "– sans règles reprises d'Aziz (R19-R24)": {"exclure": ("R19", "R20", "R21", "R22", "R23", "R24")},
     "– sans table ATC (classes du graphe seules)": {"avec_table": False},
     "– sans classes du graphe (table seule)": {"avec_classes_graphe": False},
     "– sans dictionnaire de synonymes": {"avec_synonymes": False},
@@ -290,3 +291,43 @@ def generalisation(graphe):
     res, _ = evaluer(systeme_liste_paires(Verificateur(graphe)), ordos, attendu)
     lignes.append({"configuration": "Référence : liste de paires", **res})
     return pd.DataFrame(lignes).set_index("configuration")
+
+
+# ---------------------------------------------------------------------------
+# Fusion : résultats par origine du jeu de test, et test de cohérence
+# (test de cohérence repris de la version d'Aziz, ordo_check)
+# ---------------------------------------------------------------------------
+def par_origine(graphe):
+    """Hybride et référence, séparément sur les ordonnances d'Imane (O..) et d'Aziz (P..)."""
+    ordos = charger_ordonnances()
+    attendu, _ = charger_verite()
+    lignes = []
+    for nom_jeu, filtre in [("ordonnances d'Imane (O01-O20)", "Imane"),
+                            ("ordonnances d'Aziz (P01-P20)", "Aziz"), ("jeu fusionné (40)", None)]:
+        sous = [o for o in ordos if filtre is None or o.get("origine") == filtre]
+        ids = {o["id"] for o in sous}
+        att = {k: v for k, v in attendu.items() if k[0] in ids}
+        for nom_sys, f in [("Hybride", systeme_hybride(Verificateur(graphe))),
+                           ("Référence : liste de paires", systeme_liste_paires(Verificateur(graphe)))]:
+            res, _ = evaluer(f, sous, att)
+            lignes.append({"jeu de test": nom_jeu, "système": nom_sys, "paires attendues": len(att), **res})
+    return pd.DataFrame(lignes)
+
+
+def coherence(graphe, n_permutations=5, graine=0):
+    """Même ordonnance, médicaments dans un autre ordre : les alertes et leurs niveaux doivent être identiques."""
+    verif = Verificateur(graphe)
+    rng = random.Random(graine)
+    total = incoherents = 0
+    for o in charger_ordonnances():
+        def signature(meds):
+            alertes, _, _ = verif.verifier(meds)
+            return sorted((tuple(sorted((a.a.nom, a.b.nom))), a.niveau, tuple(sorted(a.regles))) for a in alertes)
+        ref = signature(o["medicaments"])
+        for _ in range(n_permutations):
+            meds = list(o["medicaments"])
+            rng.shuffle(meds)
+            total += 1
+            incoherents += signature(meds) != ref
+    return {"ordonnances": len(charger_ordonnances()), "permutations testées": total,
+            "résultats incohérents": incoherents}

@@ -42,7 +42,7 @@ REGLES_CLASSES = [
     dict(code="R06", nom="IMAO non sélectif + sérotoninergique", A="IMAO_NS",
          B="SEROTONINERGIQUE_LARGE", niveau=4, risque="syndrome sérotoninergique",
          source=f"{ANSM} : IMAO non sélectifs + ISRS"),
-    dict(code="R07", nom="ISRS + autre sérotoninergique", A="ISRS", B="SEROTONINERGIQUE",
+    dict(code="R07", nom="ISRS/IRSN + autre sérotoninergique", A="ISRS_IRSN", B="SEROTONINERGIQUE",
          niveau=1, risque="syndrome sérotoninergique, convulsions",
          source=f"{ANSM} : médicaments sérotoninergiques ; tramadol + ISRS"),
     dict(code="R08", nom="IEC/ARA2 + épargneur de potassium", A="SRAA", B="EPARGNEUR_K",
@@ -71,6 +71,25 @@ REGLES_CLASSES = [
          niveau=3, risque="surdosage en lithium", source=f"{ANSM} : lithium + AINS ; lithium + IEC / ARA II"),
     dict(code="R18", nom="Deux antiagrégants", A="ANTIAGREGANT", B="ANTIAGREGANT", niveau=1,
          risque="majoration du risque hémorragique", source=f"{ANSM} : antiagrégants plaquettaires entre eux"),
+    # --- R19-R24 : règles reprises de la version d'Aziz (ordo_check), niveaux ramenés à l'échelle ANSM ---
+    dict(code="R19", nom="ISRS/IRSN + AINS", A="ISRS_IRSN", B="AINS", niveau=1,
+         risque="majoration du risque hémorragique (saignement digestif)",
+         source=f"{ANSM} : ISRS + AINS ; RCP Cymbalta (FDA) §7.4"),
+    dict(code="R20", nom="ISRS/IRSN + anticoagulant oral", A="ISRS_IRSN", B="ANTICOAG_ORAL", niveau=2,
+         risque="majoration du risque hémorragique",
+         source=f"{ANSM} : ISRS + anticoagulants oraux ; RCP Cymbalta (FDA) §7.4"),
+    dict(code="R21", nom="Antiagrégant + AINS", A="ANTIAGREGANT", B="AINS", niveau=1,
+         risque="majoration du risque hémorragique, notamment digestif",
+         source=f"{ANSM} : antiagrégants plaquettaires + AINS ; RCP Plavix (FDA) §7.3"),
+    dict(code="R22", nom="Digoxine + macrolide", A="DIGITALIQUE", B="MACROLIDE", niveau=2,
+         risque="augmentation de la digoxinémie",
+         source=f"{ANSM} : digoxine + clarithromycine / érythromycine ; RCP Lanoxin (FDA) §7.2"),
+    dict(code="R23", nom="Potassium + diurétique épargneur de potassium", A="POTASSIUM", B="EPARGNEUR_K",
+         niveau=4, risque="hyperkaliémie potentiellement létale (sauf hypokaliémie)",
+         source=f"{ANSM} : potassium + diurétiques épargneurs de potassium ; RCP Aldactone (FDA) §7.1"),
+    dict(code="R24", nom="Potassium + IEC/ARA2", A="POTASSIUM", B="SRAA", niveau=3,
+         risque="hyperkaliémie (sauf hypokaliémie)",
+         source=f"{ANSM} : potassium + IEC / ARA II"),
 ]
 
 REGLES_GRAPHE = [
@@ -160,16 +179,18 @@ class Verificateur:
         corroboration        : (option, désactivée par défaut) en mode concis, garder une alerte
                                générique de niveau 1 si au moins deux règles du graphe la soutiennent
         approx               : reconnaître les noms mal orthographiés (correspondance approchée)
+        exclure              : codes de règles expertes à désactiver (ablation)
     """
 
     def __init__(self, graphe, familles=TOUTES_FAMILLES, avec_table=True,
                  avec_classes_graphe=True, avec_synonymes=True, concis=True,
-                 filtre_marge=True, corroboration=False, approx=True):
+                 filtre_marge=True, corroboration=False, approx=True, exclure=()):
         self.G = graphe
         self.familles = set(familles)
         self.avec_table, self.avec_classes_graphe = avec_table, avec_classes_graphe
         self.avec_synonymes, self.concis = avec_synonymes, concis
         self.filtre_marge, self.corroboration, self.approx = filtre_marge, corroboration, approx
+        self.exclure = set(exclure)
         tous_noms = {n for c in CLASSES.values() for n in c["table"]}
         self._noms_table = {normaliser(n): n for n in tous_noms}
         self._vocabulaire = dict(self._noms_table)
@@ -218,6 +239,8 @@ class Verificateur:
     def _regles_classes(self, x, y):
         sortie = []
         for r in REGLES_CLASSES:
+            if r["code"] in self.exclure:
+                continue
             cibles_b = r["B"] if isinstance(r["B"], tuple) else (r["B"],)
             for a, b in ((x, y), (y, x)):
                 pa = self.preuve_classe(a, r["A"])

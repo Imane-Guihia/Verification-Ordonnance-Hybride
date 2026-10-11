@@ -25,3 +25,31 @@ O17,Colchicine,Clarithromycin,4,toxicité de la colchicine,ANSM Thésaurus : col
 O19,Apixaban,Clopidogrel,1,risque hémorragique,ANSM Thésaurus : anticoagulants oraux + antiagrégants,non
 O20,Sertraline,Ibuprofen,1,risque hémorragique,ANSM Thésaurus : ISRS + AINS,oui
 O20,Glyburide,Fluconazole,2,hypoglycémie,ANSM Thésaurus : sulfamides hypoglycémiants + fluconazole,non
+P01,Warfarin,Ibuprofen,3,risque hémorragique,ANSM Thésaurus : AVK + AINS ; UCSD Warfarin,non
+P02,Warfarin,Amiodarone,2,augmentation de l'INR,ANSM Thésaurus : AVK + amiodarone ; UCSD Warfarin,non
+P03,Warfarin,Fluconazole,2,augmentation de l'INR,ANSM Thésaurus : AVK + fluconazole ; UCSD Warfarin,non
+P04,Warfarin,Clopidogrel,1,risque hémorragique,ANSM Thésaurus : anticoagulants oraux + antiagrégants ; FDA Plavix §7.4,non
+P05,Clopidogrel,Naproxen,1,risque hémorragique digestif,ANSM Thésaurus : antiagrégants + AINS ; FDA Plavix §7.3,oui
+P06,Duloxetine,Ibuprofen,1,risque hémorragique,ANSM Thésaurus : ISRS + AINS ; FDA Cymbalta §7.4,oui
+P07,Duloxetine,Acetylsalicylic acid,1,risque hémorragique,ANSM Thésaurus : ISRS + AINS ; FDA Cymbalta §7.4,oui
+P08,Sertraline,Warfarin,2,risque hémorragique,ANSM Thésaurus : ISRS + anticoagulants oraux ; FDA Cymbalta §7.4,oui
+P09,Fluoxetine,Ibuprofen,1,risque hémorragique,ANSM Thésaurus : ISRS + AINS ; FDA Cymbalta §7.4,oui
+P10,Morphine,Diazepam,1,dépression respiratoire,ANSM Thésaurus : morphiniques + benzodiazépines ; FDA 2016,non
+P11,Tramadol,Lorazepam,1,dépression respiratoire,ANSM Thésaurus : morphiniques + benzodiazépines ; FDA 2016,non
+P12,Losartan,Ibuprofen,2,insuffisance rénale aiguë,ANSM Thésaurus : AINS + ARA II ; FDA Cozaar §7.3,non
+P13,Valsartan,Celecoxib,2,insuffisance rénale aiguë,ANSM Thésaurus : AINS + ARA II ; FDA Cozaar §7.3,non
+P14,Losartan,Spironolactone,3,hyperkaliémie,ANSM Thésaurus : épargneurs de potassium + ARA II ; FDA Aldactone §7.1,non
+P14,Spironolactone,Potassium Chloride,4,hyperkaliémie,ANSM Thésaurus : potassium + épargneurs de potassium ; FDA Aldactone §7.1,oui
+P14,Losartan,Potassium Chloride,3,hyperkaliémie,ANSM Thésaurus : potassium + ARA II (ajoutée lors de la fusion),oui
+P15,Digoxin,Clarithromycin,2,surdosage digitalique,ANSM Thésaurus : digoxine + clarithromycine ; FDA Lanoxin §7.2,non
+P16,Digoxin,Erythromycin,2,surdosage digitalique,ANSM Thésaurus : digoxine + érythromycine ; FDA Lanoxin §7.2,non
+P16,Digoxin,Furosemide,2,hypokaliémie favorisant la toxicité digitalique,"ANSM Thésaurus : digitaliques + hypokaliémiants (ajoutée lors de la fusion, cohérence avec O07)",oui
+P17,Sildenafil,Isosorbide Mononitrate,4,hypotension sévère,ANSM Thésaurus ; FDA Viagra §4.1,non
+P19,Warfarin,Ibuprofen,3,risque hémorragique,ANSM Thésaurus : AVK + AINS,non
+P19,Warfarin,Duloxetine,2,risque hémorragique,ANSM Thésaurus : ISRS + anticoagulants oraux ; FDA Cymbalta §7.4,oui
+P19,Duloxetine,Ibuprofen,1,risque hémorragique,ANSM Thésaurus : ISRS + AINS ; FDA Cymbalta §7.4,oui
+P19,Losartan,Ibuprofen,2,insuffisance rénale aiguë,ANSM Thésaurus : AINS + ARA II ; FDA Cozaar §7.3,non
+P19,Losartan,Spironolactone,3,hyperkaliémie,ANSM Thésaurus : épargneurs de potassium + ARA II,non
+P19,Digoxin,Clarithromycin,2,surdosage digitalique,ANSM Thésaurus : digoxine + clarithromycine ; FDA Lanoxin §7.2,non
+P19,Morphine,Diazepam,1,dépression respiratoire,ANSM Thésaurus : morphiniques + benzodiazépines,non
+P19,Warfarin,Clarithromycin,2,augmentation de l'INR,ANSM Thésaurus : AVK + macrolides (ajoutée lors de la fusion),oui

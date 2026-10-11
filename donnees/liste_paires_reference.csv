@@ -23,3 +23,5 @@ morphine,diazépam,1,ANSM : morphiniques + benzodiazépines
 amiodarone,sotalol,3,ANSM : torsadogènes
 colchicine,clarithromycine,4,ANSM : colchicine + macrolides
 allopurinol,azathioprine,3,ANSM : azathioprine + allopurinol
+digoxine,clarithromycine,2,ANSM : digoxine + clarithromycine (liste d'Aziz)
+digoxine,érythromycine,2,ANSM : digoxine + érythromycine (liste d'Aziz)

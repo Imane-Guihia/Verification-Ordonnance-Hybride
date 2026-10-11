@@ -33,7 +33,8 @@ _SYN = {
     "rivaroxaban": "Rivaroxaban", "xarelto": "Rivaroxaban",
     "dabigatran": "Dabigatran etexilate", "pradaxa": "Dabigatran etexilate",
     "enoxaparine": "Enoxaparin", "lovenox": "Enoxaparin",
-    "aspirine": "Acetylsalicylic acid", "acide acetylsalicylique": "Acetylsalicylic acid",
+    "aspirine": "Acetylsalicylic acid", "aspirin": "Acetylsalicylic acid",
+    "acide acetylsalicylique": "Acetylsalicylic acid",
     "kardegic": "Acetylsalicylic acid", "aspegic": "Acetylsalicylic acid",
     "clopidogrel": "Clopidogrel", "plavix": "Clopidogrel",
     "ticagrelor": "Ticagrelor", "brilique": "Ticagrelor", "prasugrel": "Prasugrel",
@@ -67,6 +68,8 @@ _SYN = {
     "paroxetine": "Paroxetine", "deroxat": "Paroxetine",
     "citalopram": "Citalopram", "seropram": "Citalopram",
     "escitalopram": "Escitalopram", "seroplex": "Escitalopram",
+    "duloxetine": "Duloxetine", "cymbalta": "Duloxetine",
+    "venlafaxine": "Venlafaxine", "effexor": "Venlafaxine",
     "phenelzine": "Phenelzine", "tranylcypromine": "Tranylcypromine",
     "linezolide": "Linezolid", "zyvoxid": "Linezolid",
     "tramadol": "Tramadol", "contramal": "Tramadol", "topalgic": "Tramadol",
@@ -79,7 +82,7 @@ _SYN = {
     "zolpidem": "Zolpidem", "stilnox": "Zolpidem",
     "lithium": "Lithium", "teralithe": "Lithium",
     "haloperidol": "Haloperidol", "haldol": "Haloperidol",
-    "paracetamol": "Acetaminophen", "doliprane": "Acetaminophen", "dafalgan": "Acetaminophen",
+    "paracetamol": "Acetaminophen", "acetaminophen": "Acetaminophen", "doliprane": "Acetaminophen", "dafalgan": "Acetaminophen",
     "efferalgan": "Acetaminophen",
     # cardio / rein
     "lisinopril": "Lisinopril", "zestril": "Lisinopril",
@@ -89,6 +92,8 @@ _SYN = {
     "losartan": "Losartan", "cozaar": "Losartan", "valsartan": "Valsartan", "tareg": "Valsartan",
     "spironolactone": "Spironolactone", "aldactone": "Spironolactone",
     "eplerenone": "Eplerenone", "inspra": "Eplerenone", "amiloride": "Amiloride",
+    "chlorure de potassium": "Potassium Chloride", "diffu k": "Potassium Chloride",
+    "kaleorid": "Potassium Chloride", "potassium chloride": "Potassium Chloride",
     "furosemide": "Furosemide", "lasilix": "Furosemide",
     "hydrochlorothiazide": "Hydrochlorothiazide", "esidrex": "Hydrochlorothiazide",
     "digoxine": "Digoxin",
@@ -179,10 +184,15 @@ CLASSES = {
         "table": {"Sildenafil": "G04BE03", "Tadalafil": "G04BE08", "Vardenafil": "G04BE09"},
     },
     "ISRS": {
-        "libelle": "inhibiteurs sélectifs de la recapture de la sérotonine",
+        "libelle": "inhibiteurs de la recapture de la sérotonine",
         "pcic": ["Serotonin Uptake Inhibitors"],
         "table": {"Fluoxetine": "N06AB03", "Citalopram": "N06AB04", "Paroxetine": "N06AB05",
                   "Sertraline": "N06AB06", "Escitalopram": "N06AB10"},
+    },
+    "IRSN": {
+        "libelle": "inhibiteurs de la recapture de la sérotonine et de la noradrénaline",
+        "pcic": [],
+        "table": {"Duloxetine": "N06AX21", "Venlafaxine": "N06AX16"},
     },
     "IMAO_NS": {
         "libelle": "IMAO non sélectifs",
@@ -224,6 +234,16 @@ CLASSES = {
         "libelle": "digitaliques",
         "pcic": ["Cardiac Glycosides"],
         "table": {"Digoxin": "C01AA05"},
+    },
+    "MACROLIDE": {
+        "libelle": "macrolides",
+        "pcic": ["Macrolides"],
+        "table": {"Clarithromycin": "J01FA09", "Erythromycin": "J01FA01"},
+    },
+    "POTASSIUM": {
+        "libelle": "sels de potassium",
+        "pcic": [],
+        "table": {"Potassium Chloride": "A12BA01"},
     },
     "INHIB_PGP": {
         "libelle": "inhibiteurs de la glycoprotéine P",
@@ -271,7 +291,9 @@ CLASSES = {
 GROUPES = {
     "ANTICOAGULANT": ["AVK", "AOD", "HEPARINE"],
     "SRAA": ["IEC", "ARA2"],
-    "SEROTONINERGIQUE_LARGE": ["ISRS", "SEROTONINERGIQUE"],
+    "ISRS_IRSN": ["ISRS", "IRSN"],
+    "SEROTONINERGIQUE_LARGE": ["ISRS", "IRSN", "SEROTONINERGIQUE"],
+    "ANTICOAG_ORAL": ["AVK", "AOD"],
 }
 
 

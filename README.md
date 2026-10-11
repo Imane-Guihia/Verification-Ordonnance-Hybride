@@ -1,6 +1,8 @@
 # Sujet 3 — Vérification d'ordonnance par graphe et règles
 
-Mini-projet IA hybride — ISIS Castres, 5e année DSIA.
+Mini-projet IA hybride — ISIS Castres, 5e année DSIA. Binôme : Imane Guihia et Mohamed Aziz Braham.
+
+Version fusionnée des deux prototypes du binôme (voir « Contributions »).
 
 Pour une ordonnance (liste de médicaments), le système signale les associations à risque, les classe par gravité (échelle du Thésaurus ANSM) et explique chaque alerte : règle déclenchée, source, et chemin dans le graphe Hetionet ou ligne de la table ATC.
 
@@ -14,16 +16,18 @@ $ python src/verifier.py warfarine ibuprofène oméprazole
 ...
 ```
 
-## Résultats principaux (20 ordonnances, 26 paires à risque attendues)
+## Résultats principaux (40 ordonnances, 54 paires à risque attendues)
 
 | Système | Précision | Rappel | F1 | Alertes / ordonnance |
 |---|---|---|---|---|
-| **Hybride (graphe + règles), mode concis** | 0,91 | 0,77 | **0,83** | 1,10 |
-| Hybride sans filtre anti-fatigue | 0,35 | 0,92 | 0,51 | 3,45 |
-| Graphe seul (règles génériques G1-G3) | 0,83 | 0,19 | 0,31 | 0,30 |
-| Référence non hybride : liste de paires | 1,00 | 0,42 | 0,60 | 0,55 |
+| **Hybride (graphe + règles), mode concis** | 0,96 | 0,89 | **0,92** | 1,25 |
+| Hybride sans filtre anti-fatigue | 0,42 | 0,94 | 0,58 | 3,02 |
+| Graphe seul (règles génériques G1-G3) | 0,91 | 0,19 | 0,31 | 0,28 |
+| Référence non hybride : liste de paires | 1,00 | 0,39 | 0,56 | 0,53 |
 
-Sur 5 ordonnances de généralisation (médicaments absents de la table du groupe) : hybride 5/5, table seule 0/5, liste de paires 0/5.
+- Généralisation (5 ordonnances, médicaments absents de la table) : hybride 5/5, table seule 0/5, liste de paires 0/5.
+- Cohérence : 0 résultat incohérent sur 200 permutations de l'ordre des médicaments.
+- Avant la fusion, l'évaluation croisée donnait : version d'Imane F1 0,83 sur son jeu et 0,76 sur celui d'Aziz ; version d'Aziz F1 0,94 sur son jeu et 0,38 sur celui d'Imane. Les règles R19-R24 ayant été ajoutées après avoir vu les ordonnances d'Aziz, le score sur ses ordonnances (F1 0,98) est optimiste.
 
 ## Structure
 
@@ -34,8 +38,8 @@ projet/
 ├── src/
 │   ├── graphe.py            chargement de Hetionet, sous-graphe, accès par médicament
 │   ├── connaissances.py     synonymes, table ATC, effets graves, marge thérapeutique étroite
-│   ├── regles.py            18 règles expertes + 3 règles du graphe, moteur d'alertes
-│   ├── evaluation.py        métriques, référence, ablation, erreurs, robustesse, généralisation
+│   ├── regles.py            24 règles expertes + 3 règles du graphe, moteur d'alertes
+│   ├── evaluation.py        métriques, référence, ablation, erreurs, robustesse, généralisation, cohérence
 │   ├── problog_regles.py    bonus : règles pondérées en ProbLog
 │   ├── reference_llm.py     2e référence optionnelle : LLM local sans graphe (Ollama)
 │   └── verifier.py          vérification en ligne de commande
@@ -45,12 +49,13 @@ projet/
 │   ├── 03_evaluation.ipynb
 │   └── 04_bonus_problog.ipynb
 ├── donnees/
-│   ├── ordonnances.json                 20 ordonnances de test
-│   ├── verite_terrain.csv               26 alertes attendues, niveau et source
+│   ├── ordonnances.json                 40 ordonnances de test (O01-O20 Imane, P01-P20 Aziz)
+│   ├── verite_terrain.csv               54 alertes attendues, niveau et source
 │   ├── ordonnances_generalisation.json  5 ordonnances de généralisation
 │   ├── verite_generalisation.csv
-│   ├── liste_paires_reference.csv       24 paires pour la référence non hybride
+│   ├── liste_paires_reference.csv       26 paires pour la référence non hybride
 │   └── sources.md                       sources et points à vérifier
+├── soutenance/              présentation et trame orale de la version d'Aziz (chiffres à mettre à jour)
 └── data/                    fichiers Hetionet v1.0 (fournis ; retéléchargés s'ils manquent)
 ```
 
@@ -70,11 +75,20 @@ Hetionet v1.0 (CC0), Thésaurus ANSM des interactions médicamenteuses, index AT
 
 ## Limites connues
 
-- Vérité terrain construite par le groupe à partir du Thésaurus : 5 niveaux sont à vérifier sur la version en vigueur.
+- Vérité terrain construite par le binôme : 16 paires sur 54 sont marquées « à vérifier » sur la version en vigueur du Thésaurus ANSM.
+- Règles et jeu de test écrits par les mêmes personnes : les scores sur chaque jeu sont optimistes (voir l'évaluation croisée).
 - Le filtre « marge étroite » de la règle G1 a été ajouté après l'analyse d'erreurs sur le jeu de test : risque de sur-ajustement, à confirmer sur d'autres ordonnances.
 - Le graphe ne connaît ni les doses (aspirine antiagrégante classée AINS) ni la force des inhibiteurs enzymatiques.
 - Une absence d'alerte n'est pas une garantie d'absence de risque.
 
+## Contributions
+
+| Élément | Origine |
+|---|---|
+| Architecture, table ATC, synonymes, règles R01-R18 et G1-G3, filtres, notebooks, ProbLog, ordonnances O01-O20 | version d'Imane |
+| Règles R19-R24 (ISRS/IRSN + AINS ou AVK, antiagrégant + AINS, digoxine + macrolides, potassium + épargneurs ou IEC/ARA2), ordonnances P01-P20, test de cohérence par permutations, présentation et trame orale | version d'Aziz ([ordo_check](https://github.com/mohamedazizbraham/ordo_check)) |
+| Évaluation croisée, fusion des jeux de test, niveaux ANSM des paires d'Aziz | fusion |
+
 ## Usage d'assistants de code
 
-Le code, les notebooks et une première version du jeu de test ont été produits avec l'aide de Claude (Anthropic), puis relus, exécutés et vérifiés par le groupe. Les niveaux d'interaction doivent être vérifiés par le groupe sur la version en vigueur du Thésaurus ANSM (voir `donnees/sources.md`).
+La version d'Imane et la fusion ont été produites avec l'aide de Claude (Anthropic), la version d'Aziz avec l'aide de Codex (OpenAI) ; le binôme a relu, exécuté et vérifié le code. Les niveaux d'interaction doivent être vérifiés par le groupe sur la version en vigueur du Thésaurus ANSM (voir `donnees/sources.md`).

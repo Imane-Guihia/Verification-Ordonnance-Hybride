@@ -1,22 +1,440 @@
 [
-  {"id": "O01", "type": "standard", "description": "Anticoagulé avec douleur articulaire", "medicaments": ["warfarine", "ibuprofène", "oméprazole"]},
-  {"id": "O02", "type": "standard", "description": "Dyslipidémie + infection respiratoire", "medicaments": ["simvastatine", "clarithromycine", "amlodipine"]},
-  {"id": "O03", "type": "standard", "description": "Angor + dysfonction érectile", "medicaments": ["trinitrine", "sildénafil", "bisoprolol"]},
-  {"id": "O04", "type": "standard", "description": "Dépression + douleur", "medicaments": ["fluoxétine", "tramadol", "paracétamol"]},
-  {"id": "O05", "type": "standard", "description": "Insuffisance cardiaque / HTA", "medicaments": ["lisinopril", "spironolactone", "furosémide"]},
-  {"id": "O06", "type": "standard", "description": "Polyarthrite rhumatoïde", "medicaments": ["méthotrexate", "kétoprofène", "prednisone"]},
-  {"id": "O07", "type": "standard", "description": "Fibrillation atriale", "medicaments": ["digoxine", "amiodarone", "furosémide"]},
-  {"id": "O08", "type": "standard", "description": "Post-infarctus (bithérapie antiagrégante)", "medicaments": ["clopidogrel", "oméprazole", "aspirine"]},
-  {"id": "O09", "type": "négatif", "description": "Diabète, HTA, dyslipidémie, hypothyroïdie", "medicaments": ["metformine", "amlodipine", "atorvastatine", "lévothyroxine"]},
-  {"id": "O10", "type": "négatif", "description": "Angine banale", "medicaments": ["amoxicilline", "paracétamol"]},
-  {"id": "O11", "type": "absent du graphe + noms commerciaux", "description": "AVK français (fluindione) + AINS en vente libre", "medicaments": ["Previscan", "Advil"]},
-  {"id": "O12", "type": "standard", "description": "Dépression + lupus", "medicaments": ["citalopram", "hydroxychloroquine"]},
-  {"id": "O13", "type": "standard", "description": "Douleur cancéreuse + anxiété", "medicaments": ["morphine", "alprazolam", "paracétamol"]},
-  {"id": "O14", "type": "règle absente", "description": "Goutte + immunosuppression", "medicaments": ["allopurinol", "azathioprine"]},
-  {"id": "O15", "type": "standard", "description": "Trouble bipolaire + HTA + douleur", "medicaments": ["lithium", "ibuprofène", "ramipril"]},
-  {"id": "O16", "type": "pharmacocinétique", "description": "Anticoagulé avec mycose et arythmie", "medicaments": ["warfarine", "fluconazole", "amiodarone"]},
-  {"id": "O17", "type": "règle absente", "description": "Crise de goutte + infection", "medicaments": ["colchicine", "clarithromycine"]},
-  {"id": "O18", "type": "polymédication (négatif)", "description": "Patient âgé, 8 médicaments", "medicaments": ["bisoprolol", "ramipril", "atorvastatine", "Kardégic", "metformine", "oméprazole", "paracétamol", "Lévothyrox"]},
-  {"id": "O19", "type": "standard", "description": "Fibrillation atriale + stent coronaire", "medicaments": ["apixaban", "clopidogrel", "pantoprazole"]},
-  {"id": "O20", "type": "pharmacocinétique", "description": "Diabétique déprimé avec mycose et douleur", "medicaments": ["sertraline", "ibuprofène", "glibenclamide", "fluconazole"]}
+  {
+    "id": "O01",
+    "type": "standard",
+    "description": "Anticoagulé avec douleur articulaire",
+    "medicaments": [
+      "warfarine",
+      "ibuprofène",
+      "oméprazole"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O02",
+    "type": "standard",
+    "description": "Dyslipidémie + infection respiratoire",
+    "medicaments": [
+      "simvastatine",
+      "clarithromycine",
+      "amlodipine"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O03",
+    "type": "standard",
+    "description": "Angor + dysfonction érectile",
+    "medicaments": [
+      "trinitrine",
+      "sildénafil",
+      "bisoprolol"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O04",
+    "type": "standard",
+    "description": "Dépression + douleur",
+    "medicaments": [
+      "fluoxétine",
+      "tramadol",
+      "paracétamol"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O05",
+    "type": "standard",
+    "description": "Insuffisance cardiaque / HTA",
+    "medicaments": [
+      "lisinopril",
+      "spironolactone",
+      "furosémide"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O06",
+    "type": "standard",
+    "description": "Polyarthrite rhumatoïde",
+    "medicaments": [
+      "méthotrexate",
+      "kétoprofène",
+      "prednisone"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O07",
+    "type": "standard",
+    "description": "Fibrillation atriale",
+    "medicaments": [
+      "digoxine",
+      "amiodarone",
+      "furosémide"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O08",
+    "type": "standard",
+    "description": "Post-infarctus (bithérapie antiagrégante)",
+    "medicaments": [
+      "clopidogrel",
+      "oméprazole",
+      "aspirine"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O09",
+    "type": "négatif",
+    "description": "Diabète, HTA, dyslipidémie, hypothyroïdie",
+    "medicaments": [
+      "metformine",
+      "amlodipine",
+      "atorvastatine",
+      "lévothyroxine"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O10",
+    "type": "négatif",
+    "description": "Angine banale",
+    "medicaments": [
+      "amoxicilline",
+      "paracétamol"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O11",
+    "type": "absent du graphe + noms commerciaux",
+    "description": "AVK français (fluindione) + AINS en vente libre",
+    "medicaments": [
+      "Previscan",
+      "Advil"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O12",
+    "type": "standard",
+    "description": "Dépression + lupus",
+    "medicaments": [
+      "citalopram",
+      "hydroxychloroquine"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O13",
+    "type": "standard",
+    "description": "Douleur cancéreuse + anxiété",
+    "medicaments": [
+      "morphine",
+      "alprazolam",
+      "paracétamol"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O14",
+    "type": "règle absente",
+    "description": "Goutte + immunosuppression",
+    "medicaments": [
+      "allopurinol",
+      "azathioprine"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O15",
+    "type": "standard",
+    "description": "Trouble bipolaire + HTA + douleur",
+    "medicaments": [
+      "lithium",
+      "ibuprofène",
+      "ramipril"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O16",
+    "type": "pharmacocinétique",
+    "description": "Anticoagulé avec mycose et arythmie",
+    "medicaments": [
+      "warfarine",
+      "fluconazole",
+      "amiodarone"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O17",
+    "type": "règle absente",
+    "description": "Crise de goutte + infection",
+    "medicaments": [
+      "colchicine",
+      "clarithromycine"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O18",
+    "type": "polymédication (négatif)",
+    "description": "Patient âgé, 8 médicaments",
+    "medicaments": [
+      "bisoprolol",
+      "ramipril",
+      "atorvastatine",
+      "Kardégic",
+      "metformine",
+      "oméprazole",
+      "paracétamol",
+      "Lévothyrox"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O19",
+    "type": "standard",
+    "description": "Fibrillation atriale + stent coronaire",
+    "medicaments": [
+      "apixaban",
+      "clopidogrel",
+      "pantoprazole"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "O20",
+    "type": "pharmacocinétique",
+    "description": "Diabétique déprimé avec mycose et douleur",
+    "medicaments": [
+      "sertraline",
+      "ibuprofène",
+      "glibenclamide",
+      "fluconazole"
+    ],
+    "origine": "Imane"
+  },
+  {
+    "id": "P01",
+    "type": "règle (Aziz)",
+    "description": "AVK + AINS",
+    "medicaments": [
+      "Warfarin",
+      "Ibuprofen"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P02",
+    "type": "peu de données (Aziz)",
+    "description": "AVK + amiodarone, statine",
+    "medicaments": [
+      "Warfarin",
+      "Amiodarone",
+      "Atorvastatin"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P03",
+    "type": "règle (Aziz)",
+    "description": "AVK + azolé",
+    "medicaments": [
+      "Warfarin",
+      "Fluconazole"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P04",
+    "type": "règle (Aziz)",
+    "description": "AVK + antiagrégant",
+    "medicaments": [
+      "Warfarin",
+      "Clopidogrel"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P05",
+    "type": "règle (Aziz)",
+    "description": "Antiagrégant + AINS",
+    "medicaments": [
+      "Clopidogrel",
+      "Naproxen",
+      "Metformin"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P06",
+    "type": "règle (Aziz)",
+    "description": "IRSN + AINS",
+    "medicaments": [
+      "Duloxetine",
+      "Ibuprofen"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P07",
+    "type": "standard (Aziz)",
+    "description": "IRSN + aspirine",
+    "medicaments": [
+      "Duloxetine",
+      "Aspirin",
+      "Metformin"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P08",
+    "type": "peu de données (Aziz)",
+    "description": "ISRS + AVK",
+    "medicaments": [
+      "Sertraline",
+      "Warfarin"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P09",
+    "type": "peu de données (Aziz)",
+    "description": "ISRS + AINS",
+    "medicaments": [
+      "Fluoxetine",
+      "Ibuprofen"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P10",
+    "type": "règle (Aziz)",
+    "description": "Opioïde + benzodiazépine",
+    "medicaments": [
+      "Morphine",
+      "Diazepam"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P11",
+    "type": "règle (Aziz)",
+    "description": "Tramadol + benzodiazépine",
+    "medicaments": [
+      "Tramadol",
+      "Lorazepam",
+      "Omeprazole"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P12",
+    "type": "règle (Aziz)",
+    "description": "ARA2 + AINS",
+    "medicaments": [
+      "Losartan",
+      "Ibuprofen",
+      "Amlodipine"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P13",
+    "type": "règle (Aziz)",
+    "description": "ARA2 + coxib",
+    "medicaments": [
+      "Valsartan",
+      "Celecoxib"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P14",
+    "type": "peu de données (Aziz)",
+    "description": "Hyperkaliémie : ARA2, spironolactone, KCl",
+    "medicaments": [
+      "Losartan",
+      "Spironolactone",
+      "Potassium chloride"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P15",
+    "type": "règle (Aziz)",
+    "description": "Digoxine + clarithromycine",
+    "medicaments": [
+      "Digoxin",
+      "Clarithromycin"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P16",
+    "type": "règle (Aziz)",
+    "description": "Digoxine + érythromycine, furosémide",
+    "medicaments": [
+      "Digoxin",
+      "Erythromycin",
+      "Furosemide"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P17",
+    "type": "peu de données (Aziz)",
+    "description": "Nitré + IPDE5",
+    "medicaments": [
+      "Sildenafil",
+      "Isosorbide Mononitrate"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P18",
+    "type": "standard (Aziz)",
+    "description": "Polymédication sans interaction",
+    "medicaments": [
+      "Metformin",
+      "Amlodipine",
+      "Omeprazole"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P19",
+    "type": "standard (Aziz)",
+    "description": "Polymédication de 9 médicaments",
+    "medicaments": [
+      "Warfarin",
+      "Ibuprofen",
+      "Duloxetine",
+      "Losartan",
+      "Spironolactone",
+      "Digoxin",
+      "Clarithromycin",
+      "Morphine",
+      "Diazepam"
+    ],
+    "origine": "Aziz"
+  },
+  {
+    "id": "P20",
+    "type": "hors distribution (Aziz)",
+    "description": "Héparine absente du graphe",
+    "medicaments": [
+      "Warfarin",
+      "Heparin",
+      "Paracetamol"
+    ],
+    "origine": "Aziz"
+  }
 ]

@@ -14,6 +14,12 @@
 - **FDA Drug Safety Communication** (2011) : limitation de dose de la simvastatine avec l'amlodipine.
 - **EMA** (2010) : interaction clopidogrel + inhibiteurs de la pompe à protons (oméprazole, ésoméprazole).
 
+## Sources ajoutées lors de la fusion (version d'Aziz)
+
+- Étiquettes FDA (DailyMed) : Viagra §4.1, Cymbalta §5.5 et §7.4, Plavix §7.3 et §7.4, Cozaar §7.3, Aldactone §7.1, Lanoxin §7.2.
+- UCSD Health, Anticoagulation Clinic, *Warfarin Drug Interactions*.
+- FDA, Safety Labeling Change Notification opioïdes + benzodiazépines (2016).
+
 ## À vérifier par le groupe
 
 Le Thésaurus ANSM évolue d'une version à l'autre. Avant la soutenance, vérifier chaque niveau sur la version en vigueur, en priorité les lignes marquées `a_verifier = oui` dans `verite_terrain.csv` :
@@ -26,4 +32,4 @@ Le Thésaurus ANSM évolue d'une version à l'autre. Avant la soutenance, vérif
 | allopurinol + azathioprine | association déconseillée ou contre-indication selon la version |
 | sertraline + ibuprofène | niveau exact (ISRS + AINS) |
 
-La liste `MARGE_ETROITE` (`src/connaissances.py`) et le niveau des règles R02, R07, R13 sont aussi à confirmer.
+Les 16 lignes `a_verifier = oui` de `verite_terrain.csv` (dont 11 ajoutées lors de la fusion) et les niveaux des règles R19-R24 sont à confirmer. La liste `MARGE_ETROITE` (`src/connaissances.py`) et le niveau des règles R02, R07, R13 sont aussi à confirmer.
