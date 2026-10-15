@@ -149,13 +149,16 @@ class Alerte:
     def paire(self):
         return tuple(sorted((self.a.nom, self.b.nom)))
 
-    def texte(self):
-        lignes = [f"[{NIVEAUX[self.niveau]}] {self.a.saisi} + {self.b.saisi}"]
+    def texte(self, numero=None):
+        """Format détaillé d'une alerte, adapté à la lecture dans le terminal."""
+        titre = f"ALERTE {numero} — {NIVEAUX[self.niveau].upper()}" if numero else NIVEAUX[self.niveau].upper()
+        lignes = [titre, f"Paire concernée : {self.a.saisi} + {self.b.saisi}"]
         for d in sorted(self.declenchements, key=lambda d: -d.niveau):
-            lignes.append(f"   • {d.code} ({NIVEAUX[d.niveau]}) — {d.risque}")
+            lignes.extend([f"Risque : {d.risque}",
+                           f"Règle {d.code} ({NIVEAUX[d.niveau]})"])
             for e in d.explication:
-                lignes.append(f"       {e}")
-            lignes.append(f"       Source : {d.source}")
+                lignes.append(f"  - {e}")
+            lignes.append(f"Source : {d.source}")
         return "\n".join(lignes)
 
 
@@ -344,11 +347,26 @@ class Verificateur:
         t0 = time.perf_counter()
         alertes, meds, avert = self.verifier(ordonnance)
         duree = (time.perf_counter() - t0) * 1000
-        lignes = ["Ordonnance : " + ", ".join(m.saisi + (f" ({m.nom})" if m.nom and m.nom.lower() != m.saisi.lower() else "")
-                                             for m in meds)]
-        lignes += [f"⚠ {a}" for a in avert]
+        lignes = ["=" * 68,
+                  "             VÉRIFICATION D'ORDONNANCE",
+                  "=" * 68,
+                  "Médicaments analysés : " + ", ".join(
+                      m.saisi + (f" → {m.nom}" if m.nom and m.nom.lower() != m.saisi.lower() else "")
+                      for m in meds)]
+        if avert:
+            lignes += ["", "AVERTISSEMENTS"]
+            lignes += [f"! {a}" for a in avert]
         if not alertes:
-            lignes.append("Aucune interaction détectée par les règles (ce n'est pas une garantie d'absence de risque).")
-        lignes += [a.texte() for a in alertes]
-        lignes.append(f"({len(alertes)} alerte(s), {duree:.1f} ms)")
+            lignes += ["", "RÉSULTAT : aucune interaction détectée par les règles.",
+                       "Cela ne garantit pas l'absence de risque clinique."]
+        else:
+            repartition = []
+            for niveau in sorted({a.niveau for a in alertes}, reverse=True):
+                n = sum(a.niveau == niveau for a in alertes)
+                repartition.append(f"{n} {NIVEAUX[niveau].lower()}")
+            lignes += ["", f"RÉSUMÉ : {len(alertes)} alerte(s) détectée(s) — " + "; ".join(repartition),
+                       "-" * 68]
+            for i, alerte in enumerate(alertes, start=1):
+                lignes += [alerte.texte(i), "-" * 68]
+        lignes.append(f"Analyse terminée en {duree:.1f} ms")
         return "\n".join(lignes)
