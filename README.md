@@ -55,8 +55,8 @@ projet/
 │   ├── verite_generalisation.csv
 │   ├── liste_paires_reference.csv       26 paires pour la référence non hybride
 │   └── sources.md                       sources et points à vérifier
-├── soutenance/              présentation et trame orale de la version d'Aziz (chiffres à mettre à jour)
-└── data/                    fichiers Hetionet v1.0 (fournis ; retéléchargés s'ils manquent)
+├── soutenance/              présentation et trame orale de la version d'Aziz 
+└── data/                    fichiers Hetionet v1.0 
 ```
 
 ## Réexécuter
